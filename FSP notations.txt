@@ -1,0 +1,42 @@
+1.Creat Community FSP Code:
+
+User=(request_to_create_new_community->display_community_form->submit_information->(tagname_count_0-> redirect_to_community-> User|tagname_count_not_unique-> error_message-> User)).
+
+EWU_Connect_Website=(get_tagname_count->total_count->query_information->ok->
+(tagname_count_0-> redirect_to_community->EWU_Connect_Website |tagname_count_not_unique-> error_message-> EWU_Connect_Website)).
+
+Database=(get_tagname_count->total_count->query_information->execute_query->ok->Database).
+
+||DEFAULT = EWU_Connect_Website || Database || User
+
+
+
+
+2.Edit Community FSP Code:
+
+User = (req_update_community_details -> display_update_form -> User | submit_info -> (tagname_unique -> okay -> User |
+targetname_notunique -> error -> User)).
+
+EwuWebsite = (req_update_community_details -> display_update_form -> submit_info -> validate_info -> (tagname_unique -> send_info -> okay -> EwuWebsite | 
+tagname_notunique-> send_info  -> error -> EwuWebsite )).
+
+Database= (tagname_unique -> send_info -> okay -> Database | 
+tagname_notunique-> send_info -> rejected -> Database ).
+
+
+|| EditCommunity = (User || EwuWebsite || Database ).
+
+
+
+3.Update profile Information FSP Code:
+
+User=(request_edit_profile->display_update_form->submit_info->confirmation->User).
+
+EWU_Connect_Website=(request_edit_profile->display_update_form->submit_info->query_new_info
+->confirmation->EWU_Connect_Website).
+
+Database=(query_new_information->execute_query->ok->Database).
+
+||DEFAULT = EWU_Connect_Website || Database || User
+
+
